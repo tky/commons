@@ -1,11 +1,11 @@
 package com.tk.util;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
 public class UrlBuilder {
@@ -43,7 +43,11 @@ public class UrlBuilder {
 	
 	public UrlBuilder add(String key, String value) {
 		if (StringUtils.isNotEmpty(value)) {
-		    queries.put(key, StringEscapeUtils.escapeHtml(value));
+			try {
+		        queries.put(key, URLEncoder.encode(value, "utf-8"));
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
 		}
 		return this;
 	}
