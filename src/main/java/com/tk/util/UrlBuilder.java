@@ -24,7 +24,7 @@ public class UrlBuilder {
 	public static UrlBuilder valueOf(String... urls) {
 		return new UrlBuilder(StringUtils.join(urls));
 	}
-	public String buld() {
+	public String build() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(url);
 		
